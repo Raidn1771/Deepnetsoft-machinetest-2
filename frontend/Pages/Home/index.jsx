@@ -31,7 +31,7 @@ const Home = () => {
 
         // 1. Fetch categories
         const categoriesRes = await fetch(
-          `http://localhost:3000/api/menu/categories?t=${lastRefresh}`
+          `https://deepnetsoft-machinetest-2-backend.onrender.com/api/menu/categories?t=${lastRefresh}`
         );
         logger('Categories response status:', categoriesRes.status);
 
@@ -49,7 +49,7 @@ const Home = () => {
 
         // 3. Fetch menu items
         const itemsRes = await fetch(
-          `http://localhost:3000/api/menu?category=${activeCategory}&t=${lastRefresh}`
+          `https://deepnetsoft-machinetest-2-backend.onrender.com/api/menu?category=${activeCategory}&t=${lastRefresh}`
         );
         logger('Items response status:', itemsRes.status);
 
@@ -91,7 +91,7 @@ const Home = () => {
     e.preventDefault();
     try {
       logger('Submitting form data:', formData);
-      const response = await fetch('http://localhost:3000/api/menu', {
+      const response = await fetch('https://deepnetsoft-machinetest-2-backend.onrender.com/api/menu', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
