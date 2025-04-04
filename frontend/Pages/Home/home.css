@@ -1,0 +1,718 @@
+/* ===== MAIN LAYOUT ===== */
+.heroContainer {
+  margin-top: 0;
+  background-image: url('/bg1.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 311px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+/* Debugging Helper (temporary) */
+.debug-info {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 10px;
+  z-index: 1000;
+  font-family: monospace;
+}
+
+/* Ensure menu items grid is visible */
+.menuItemsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  width: 100%;
+  min-height: 200px; /* Ensure space even if empty */
+  background: transparent;
+}
+
+/* Menu item card styling */
+.menuItemCard {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid #04649f;
+  padding: 15px;
+  border-radius: 5px;
+  transition: transform 0.3s;
+}
+
+.menuItemCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Loading state */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: #bbbbbb;
+  font-family: 'Oswald', sans-serif;
+}
+
+/* Refresh button animation */
+@keyframes spinRefresh {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.refresh-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  background-color: #0796ef;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 100;
+  font-family: 'Oswald', sans-serif;
+  transition: all 0.3s;
+}
+
+.refresh-button:hover {
+  background-color: #04649f;
+  animation: spinRefresh 0.5s linear;
+}
+
+.heroContainer h1 {
+  margin-top: 7%;
+  font-family: 'Oswald', sans-serif;
+  font-size: 75px;
+  font-weight: 600;
+  text-shadow: 4px 3px 0px #800020;
+}
+
+.heroContainer p {
+  max-width: 681px;
+  font-family: 'Kelly Slab', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  margin-left: 28%;
+  color: #bbbbbb;
+}
+
+/* ===== MENU ITEM BAR (Centered Alignment) ===== */
+.menuItemBar {
+  display: flex;
+  gap: 10px;
+  height: 79px;
+  background-image: url('/bg2.png');
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 0 100px;
+}
+
+.menuButton {
+  width: 114.25px;
+  height: 49.98px;
+  text-align: center;
+  padding: 10px;
+  margin: 0 5px;
+  background-color: #000000;
+  border: 0.5px solid #04649f;
+  font-family: 'Oswald', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.menuButton:hover {
+  background-color: #04649f;
+}
+
+.menuButton.active {
+  background-color: #04649f;
+  color: white;
+}
+
+.addButton {
+  position: absolute;
+  right: 20px;
+  background-color: #0796ef !important;
+  margin-left: 0;
+}
+
+/* ===== MENU CARD SECTION ===== */
+.menuCard {
+  background-image: url('/bg3.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 672px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  padding: 20px;
+  position: relative;
+}
+
+.frameR,
+.frameL {
+  background-color: transparent;
+  position: absolute;
+  height: 100%;
+  z-index: 1;
+}
+
+.frameR {
+  right: 0;
+}
+
+.frameL {
+  left: 0;
+}
+
+/* ===== MENU LIST BOX ===== */
+.menuListBox {
+  border: 1px solid white;
+  width: 1140px;
+  min-height: 516px;
+  background-color: transparent;
+  position: relative;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  padding-bottom: 40px;
+}
+
+/* ===== MENU HEADER (Centered Title) ===== */
+.cocktail2 {
+  position: absolute;
+  left: -40px;
+  top: -110px;
+  width: 150px;
+  height: auto;
+  z-index: 3;
+  background-color: transparent;
+}
+
+.cocktail1 {
+  position: absolute;
+  right: -20px;
+  bottom: -35px;
+  width: 150px;
+  height: auto;
+  z-index: 3;
+  background-color: transparent;
+}
+
+/* ===== MENU HEADER POSITIONING ===== */
+.menuHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+  background-color: transparent;
+}
+
+.line {
+  flex: 1;
+  max-width: 100px;
+  height: 1px;
+  border: 3px solid #857878;
+  margin: 0 15px;
+}
+
+.category {
+  font-size: 50px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  text-shadow: 4px 3px 0px #800020;
+  text-align: center;
+  white-space: nowrap;
+  padding: 0 20px;
+  margin: 0;
+}
+
+/* ===== MENU ITEMS GRID ===== */
+.menuList {
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+  position: relative;
+  z-index: 2;
+  padding-bottom: 40px;
+  background: transparent;
+}
+
+.menuItemsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+.menuItemCard {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid #04649f;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.menuItemCard h2 {
+  font-family: 'Oswald', sans-serif;
+  color: white;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.ingredients {
+  color: #bbbbbb;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.price {
+  color: #008bff;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.noItems {
+  color: white;
+  text-align: center;
+  margin-top: 50px;
+  font-size: 18px;
+}
+
+/* ===== ABOUT SECTION ===== */
+.aboutDiv {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 50px 0;
+}
+
+.aboutBox {
+  display: flex;
+  gap: 30px;
+  margin: 0 auto;
+  max-width: 1200px;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.about1 {
+  border: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 26px 100px;
+  text-align: center;
+  border-radius: 15px;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.about1 h1 {
+  font-family: 'Oswald', sans-serif;
+  color: #0796ef;
+  font-weight: 500;
+  font-size: 17px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.about {
+  width: 141px;
+  height: 22.6px;
+  margin: 0 auto;
+}
+
+.aboutLogo {
+  position: absolute;
+  left: 160px;
+  top: -40px;
+  background-color: transparent;
+  width: 86px;
+  height: 76px;
+}
+
+.aboutSocial {
+  margin-left: 30px;
+  width: 141px;
+  height: auto;
+}
+
+.aboutLocation {
+  width: 212px;
+  height: 45.21px;
+  margin: 0 auto;
+}
+
+/* ===== LOGO TITLE ===== */
+.logoTitle {
+  font-family: 'Oswald', sans-serif;
+  font-size: 35px;
+  font-weight: 400;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+/* ===== MODAL STYLES ===== */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background-color: #121618;
+  padding: 30px;
+  border-radius: 8px;
+  width: 500px;
+  max-width: 90%;
+  border: 1px solid #04649f;
+  position: relative;
+}
+
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
+}
+
+/* ===== FORM STYLES ===== */
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 8px;
+  color: white;
+  font-family: 'Oswald', sans-serif;
+}
+
+.formGroup input,
+.formGroup select {
+  width: 100%;
+  padding: 10px;
+  background-color: #1e2326;
+  border: 1px solid #04649f;
+  color: white;
+  border-radius: 4px;
+  font-family: 'Oswald', sans-serif;
+}
+
+.submitButton {
+  background-color: #0796ef;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Oswald', sans-serif;
+  width: 100%;
+  font-size: 16px;
+}
+
+.submitButton:hover {
+  background-color: #04649f;
+}
+
+/* Loading State */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #0796ef;
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 10px;
+  background: transparent;
+}
+
+/* Refresh  */
+.force-refresh {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #0796ef;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 100;
+  font-family: 'Oswald', sans-serif;
+}
+
+.force-refresh:hover {
+  background: #04649f;
+}
+
+/* Loading States */
+.loading-state {
+  display: flex;
+  background: transparent;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  gap: 15px;
+  color: #bbbbbb;
+  font-family: 'Oswald', sans-serif;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(7, 150, 239, 0.2);
+  border-radius: 50%;
+  border-top-color: #0796ef;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Refresh Button */
+.refresh-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 15px;
+  background-color: #0796ef;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 100;
+  font-family: 'Oswald', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.refresh-button:hover {
+  background-color: #04649f;
+  transform: rotate(360deg);
+}
+
+/* Empty State Button */
+.noItems .add-item-button {
+  background: #0796ef;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  margin-top: 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Oswald', sans-serif;
+  display: block;
+  margin: 15px auto 0;
+  transition: background 0.3s;
+}
+
+.noItems .add-item-button:hover {
+  background: #04649f;
+}
+
+/* Modal Disabled State */
+.submitButton:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+}
+
+/* ===== MOBILE STYLES (max-width: 393px) ===== */
+@media (max-width: 393px) {
+  .heroContainer {
+    height: 200px;
+    padding: 0 15px;
+  }
+
+  .heroContainer h1 {
+    margin-top: 15%;
+    font-size: 36px;
+  }
+
+  .heroContainer p {
+    max-width: 100%;
+    margin-left: 0;
+    font-size: 14px;
+    padding: 0 20px;
+  }
+
+  .menuItemBar {
+    padding: 10px 80px 10px 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: auto;
+  }
+
+  .menuButton {
+    width: 90px;
+    height: 40px;
+    font-size: 12px;
+    padding: 5px;
+    margin: 5px;
+  }
+
+  .addButton {
+    right: 10px;
+    top: 10px;
+  }
+
+  .menuCard {
+    min-height: 500px;
+    padding: 10px;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .frameR,
+  .frameL,
+  .cocktail2,
+  .cocktail1 {
+    display: none;
+  }
+
+  .menuListBox {
+    width: 100%;
+    min-height: 350px;
+    padding: 10px;
+  }
+
+  .menuHeader {
+    margin: 10px 0;
+  }
+
+  .category {
+    font-size: 24px;
+    padding: 0 10px;
+  }
+
+  .line {
+    max-width: 50px;
+    margin: 0 5px;
+  }
+
+  .menuList {
+    padding: 10px;
+  }
+
+  .menuItemsGrid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .menuItemCard {
+    padding: 10px;
+  }
+
+  .menuItemCard h2 {
+    font-size: 16px;
+  }
+
+  .ingredients {
+    font-size: 12px;
+  }
+
+  .price {
+    font-size: 14px;
+  }
+
+  .aboutDiv {
+    padding: 20px 0;
+  }
+
+  .aboutBox {
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 0 15px;
+    gap: 20px;
+  }
+
+  .about1 {
+    padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .aboutLogo {
+    left: 20px;
+    top: -40px;
+    width: 60px;
+    height: 60px;
+  }
+
+  .about,
+  .aboutSocial,
+  .aboutLocation {
+    width: 100%;
+    height: auto;
+    max-width: 200px;
+    margin: 0 auto;
+  }
+
+  .aboutSocial {
+    margin-left: 0;
+  }
+
+  .logoTitle {
+    font-size: 24px;
+    margin-top: 5px;
+  }
+
+  .modalContent {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .formGroup input,
+  .formGroup select {
+    padding: 8px;
+  }
+
+  .submitButton {
+    padding: 8px 15px;
+  }
+}

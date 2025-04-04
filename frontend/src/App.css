@@ -1,0 +1,10 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  background-color: black;
+  color: white;
+}
+h1,
+p {
+  background-color: transparent;
+}
